@@ -1,4 +1,4 @@
-use command_rpc::{crpc_main, print_ast};
+use command_rpc::{crpc_main};
 
 // Macro for parsing the input
 // macro_rules! parse {
@@ -16,7 +16,7 @@ use command_rpc::{crpc_main, print_ast};
 #[crpc_main]
 pub mod rustflixArgs {
 
-    use command_rpc::{crpc_mod, crpc_fn};
+    use command_rpc::{crpc_fn, crpc_mod};
 
     #[crpc_fn]
     pub fn videoCommand() {
@@ -28,7 +28,7 @@ pub mod rustflixArgs {
         todo!()
     }
 
-    #[crpc_mod] 
+    #[crpc_mod]
     pub mod userCommand {
 
         use command_rpc::crpc_fn;
@@ -55,12 +55,6 @@ pub mod rustflixArgs {
     }
 }
 
-// Callback
-// fn from_other() {
-//     callback!(my_cli_backend::...::greet("John"));
-// }
-
-// #[print_ast]
 fn main() {
-    todo!()
+    RustflixArgs::parse().delegate();
 }
