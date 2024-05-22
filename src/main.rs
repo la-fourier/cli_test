@@ -1,30 +1,29 @@
-use command_rpc::{crpc_main};
-
-// Macro for parsing the input
-// macro_rules! parse {
-//     // For the main function, that automatically parses the input and calls the right function - you have to pass the path to the crpc_main module
-//     ($inp:expr) => {
-//         let mut path = $inp.split("::").collect();
-//         let mut module = path.last();
-//         module = module[0].uppercase() + module[1..].to_string();
-//         path.push(&module);
-//         let path = path.join("::");
-//         path!($path).delegate();
-//     };
-// }
+use command_rpc::crpc_main;
 
 #[crpc_main]
 pub mod rustflixArgs {
 
     use command_rpc::{crpc_fn, crpc_mod};
 
+    // Test
     #[crpc_fn]
-    pub fn videoCommand() {
-        todo!()
+    /// Testkommenatr
+    pub fn videoCommand(
+        /// sdfj
+        name: String,
+        /// This is mail..
+        email: Option<String>,
+        chapters: Vec<i32>) {
+        print!("Hello {}, your email is {:?}", name, email);
     }
 
     #[crpc_fn]
-    pub fn viewCommand() {
+    pub fn viewCommand(test: i32) {
+        print!("Hey, you are viewing {}", test);
+    }
+
+    #[crpc_fn]
+    pub fn userCommand() {
         todo!()
     }
 
@@ -54,6 +53,7 @@ pub mod rustflixArgs {
         }
     }
 }
+
 
 fn main() {
     RustflixArgs::parse().delegate();
